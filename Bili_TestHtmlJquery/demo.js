@@ -2488,6 +2488,9 @@ defineClass("SWHomeBangumiDidEndItem:UIView",{
           epLabel.setFont (UIFont.systemFontOfSize(12));
           epLabel.setTextColor(normalGrayColor);
           self.addSubview(epLabel);
+            
+           var tap = UITapGestureRecognizer.alloc().initWithTarget_action(self,"tapClick:");
+            self.addGestureRecognizer(tap);
 
 
       }
@@ -2504,11 +2507,11 @@ defineClass("SWHomeBangumiDidEndItem:UIView",{
         self.getProp("titleLabel").setText( model.objectForKey("title"));
         self.getProp("epLabel").setText(epTitle.toJS() +"话全");
     },
-    touchesBegan_withEvent:function(touches,event){
-        var vc = SWBasicViewController.alloc().init();
-        vc.view().setBackgroundColor(mainColor);
-        mainNavigator.pushViewController_animated(vc,1);
-    },
+    tapClick:function(tap) {
+            var vc = SWBasicViewController.alloc().init();
+            vc.view().setBackgroundColor(mainColor);
+            mainNavigator.pushViewController_animated(vc,1);
+            },
     layoutSubviews:function(){
         self.super().layoutSubviews();
         var width;
